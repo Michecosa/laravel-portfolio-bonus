@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
