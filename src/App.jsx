@@ -2,10 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "./layout/DefaultLayout";
 import Homepage from "./pages/Homepage";
 import ProjectPage from "./pages/ProjectPage";
+import ScrollToHashElement from "./components/ScrollToHashElement";
 
 export default function App() {
   return (
   <BrowserRouter>
+  <ScrollToHashElement/>
     <Routes>
       <Route element={<DefaultLayout />}>
         <Route path="/" element={<Homepage />}></Route>

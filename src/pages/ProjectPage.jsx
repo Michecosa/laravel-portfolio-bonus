@@ -25,8 +25,8 @@ export default function ProjectPage() {
   if (!project) return <div className="container">Project Not Found.</div>;
 
   return (
-    <div className="container">
-      <Link to="/" className="btn btn-outline-secondary mb-4">
+    <div className="container my-5 py-5">
+      <Link to="/#projects" className="btn btn-outline-secondary mb-4">
         &larr; Back to List
       </Link>
 
