@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function Homepage() {
@@ -18,31 +19,33 @@ export default function Homepage() {
 
   return (
     <div className="container">
-      <h1 className="mb-4">I miei Progetti</h1>
+      <h1 className="mb-4">My Projects</h1>
       
       <div className="row g-4">
         {projects.length > 0 ? (
           projects.map((project) => (
             <div className="col-md-4" key={project.id}>
-              <div className="card h-100">
-                <img 
-                  src={project.cover_image} 
-                  className="card-img-top" 
-                  alt={project.title} 
-                  style={{ height: '200px', objectFit: 'cover' }}
-                />
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{project.title}</h5>
-                  <p className="card-text text-truncate flex-grow-1">{project.description}</p>
-                  <span className="badge text-bg-primary">
-                    {project.type?.name}
-                  </span>
+              <Link to={`/projects/${project.id}`} className="text-decoration-none">
+                <div className="card h-100">
+                  <img
+                    src={project.cover_image}
+                    className="card-img-top"
+                    alt={project.title}
+                    style={{ height: '200px', objectFit: 'cover' }}
+                  />
+                  <div className="card-body d-flex flex-column">
+                    <h5 className="card-title">{project.title}</h5>
+                    <p className="card-text text-truncate flex-grow-1">{project.description}</p>
+                    <span className="badge text-bg-primary">
+                      {project.type?.name}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))
         ) : (
-          <p>Loading data...</p>
+          <p>Loading...</p>
         )}
       </div>
     </div>
