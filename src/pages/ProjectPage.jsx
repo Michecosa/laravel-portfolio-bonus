@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
+const BASE_URL = "http://127.0.0.1:8000/storage/";
+
 export default function ProjectPage() {
   const { id } = useParams();
   const [project, setProject] = useState(null);
@@ -50,7 +52,9 @@ export default function ProjectPage() {
 
         <div className="col-md-4">
           <img 
-            src={project.cover_image} 
+            src={project.cover_image.startsWith('http') 
+              ? project.cover_image 
+              : `${BASE_URL}${project.cover_image}`} 
             alt={project.title} 
             className="img-fluid rounded"
           />

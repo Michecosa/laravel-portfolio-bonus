@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+const BASE_URL = "http://127.0.0.1:8000/storage/";
+
 export default function Homepage() {
   const [projects, setProjects] = useState([]);
 
@@ -27,8 +29,10 @@ export default function Homepage() {
             <div className="col-md-4" key={project.id}>
               <Link to={`/projects/${project.id}`} className="text-decoration-none">
                 <div className="card h-100">
-                  <img
-                    src={project.cover_image}
+                  <img 
+                    src={project.cover_image.startsWith('http') 
+                      ? project.cover_image 
+                      : `${BASE_URL}${project.cover_image}`}
                     className="card-img-top"
                     alt={project.title}
                     style={{ height: '200px', objectFit: 'cover' }}
